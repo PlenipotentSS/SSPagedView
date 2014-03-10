@@ -1,14 +1,33 @@
 SSPagedView
 ===========
 
-paging ability through several views
+paging ability through several views. Very similar to many apps using media such as Facbeook's scrolling on posts. 
 
-<table style="border: 0px; width: 100%"><tr><td>
+####Implementation:
 
-![](screenshot1.png)
+Single class making use of UIScrollViewDelegate on a UIView. The goal of this demo is to contain an array of views and populate a nice "peak" scroll view dynamically. 
 
-</td><td>
+Required delegate methods for SSPagedView:
+```
 
-![](screenshot2.png)
+- (CGSize)sizeForPageInView:(SSPagedView*)pagedView;
 
-</td></tr></table>
+- (void)pageView:(SSPagedView*) pagedView didScrollToPageAtIndex:(NSInteger) index;
+
+- (void)pageView:(SSPagedView*)pagedView selectedPageAtIndex:(NSInteger)index;
+
+- (NSInteger)numberOfPagesInView:(SSPagedView*)pagedView;
+
+- (UIView*)pageView:(SSPagedView*)pagedView entryForPageAtIndex:(NSInteger)index;
+
+```
+Then, just pull in the view via IBOutlets or programatically and customize with the following: ```UIPageControl```, ```MINIMUM_SCALE``` and ```MINIMUM_SIZE```.
+
+Take a look at the demo project for more details!
+
+
+|                       |                       |
+|  -------------------  |  ------------------- |
+| ![](screenshot1.png)  | ![](screenshot2.png)  |
+|                       |                       |
+
